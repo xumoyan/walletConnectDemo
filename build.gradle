@@ -1,0 +1,58 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    ext.kotlin_version = '1.4.31'
+    ext {
+        versions = [
+                kotlin                    : "1.4.31",
+                moshi                     : '1.8.0',
+                okhttp                    : '3.11.0',
+                jupiter                   : '5.7.0',
+
+                'minSdk'                  : 14,
+                'compileSdk'              : 28,
+                'buildTools'              : '28.0.3',
+                'androidPlugin'           : '3.4.0',
+
+                androidx_app_compat       : '1.0.2',
+                androidx_card_view        : '1.0.0',
+                androidx_constraint_layout: '1.1.3',
+                androidx_lifecycle        : '2.0.0',
+                androidx_test_ext         : '1.1.0',
+                androidx_recycler_view    : '1.0.0',
+                androidx_room             : '2.0.0',
+
+                multidex                  : '2.0.1',
+        ]
+
+        ext.deps = [
+                android: [
+                        'runtime'     : 'com.google.android:android:4.1.1.4',
+                        'gradlePlugin': "com.android.tools.build:gradle:${versions.androidPlugin}",
+                ]
+        ]
+    }
+
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:4.1.2'
+        classpath 'com.github.ben-manes:gradle-versions-plugin:+'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.31"
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven { url 'https://jitpack.io' }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+apply plugin: "com.github.ben-manes.versions"
